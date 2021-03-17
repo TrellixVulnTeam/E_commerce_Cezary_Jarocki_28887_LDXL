@@ -17,6 +17,8 @@ export class MainService {
   products: any; // Tutaj wyląduje obiekt z produktami - odpowiedź API i bazy danych na naszą prośbę
   apiPath = 'http://jakubadamus.cba.pl/xhr.php?'; // Ścieżka do naszego api
 
+  cart: any[] = [];
+
   // tslint:disable-next-line: typedef
   getProducts(productsRequest: {action: string; name: string; category: string; } ) { //  Pobiera produkty poprzez API
     const s = new Promise((resolve, reject) => {
