@@ -104,4 +104,36 @@ export class MainService {
         console.log('Coś poszło nie tak podczas usuwania produktu!');
       });
     }
+    // tslint:disable-next-line: member-ordering
+    orders: any;
+    // tslint:disable-next-line: typedef
+    getOrders() {
+      const s = new Promise((resolve, reject) => {
+        const xhttp = new XMLHttpRequest();
+        // tslint:disable-next-line: prefer-const
+        let request = {
+          action: 'getOrders'
+        };
+        const SQL = ('object=' + encodeURIComponent(JSON.stringify(request)));
+        console.log(this.apiPath + SQL);
+        xhttp.open('GET', this.apiPath + SQL, true);
+        xhttp.send();
+        // tslint:disable-next-line: typedef
+        xhttp.onreadystatechange = function() {
+          if (this.readyState === 4 && this.status === 200) {
+            const resultObject = JSON.parse(xhttp.responseText);
+            if (resultObject !== null) {
+              resolve(resultObject);
+            } else {
+              reject('Failed');
+            }
+          }
+        };
+      });
+      s.then((onmessage: any) => {
+        console.log('Pomyślnie pobrano zamówienia!');
+        this.orders = onmessage; }).catch((onmessage) => {
+          console.log('Coś poszło nie tak podczas pobierania zamówień!');
+        });
+      }
 }

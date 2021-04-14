@@ -1,46 +1,59 @@
 <app-panel-top></app-panel-top>
-<div class="products">
-  <table style="margin:0 auto;" id="cartTable">
-    <thead *ngIf="this.mainService.products">
-      <tr>
-        <th>obrazek</th>
-        <th>dane</th>
-      </tr>
-    </thead>
-    <tbody>
-      <ng-container *ngFor="let object of this.mainService.cart">
-        <tr style="background-color: whitesmoke;">
-          <td>
-            <img src="{{object.product.thumbnail}}" alt="">
-          </td>
-          <td>
-            <ul>
-              <li>Tytuł: {{object.product.title}}</li>
-              <li>Cena: {{object.product.price}}</li>
-              <li>Kategoria: {{object.product.category}}</li>
-            </ul>
-          </td>
+
+<div class="body-wrapper">
+  <div class="wrapper">
+    <div class="sideTable"></div>
+    <table id="cartTable">
+      <thead *ngIf="this.mainService.products" id="tableHead">
+        <tr>
+          <th>obrazek</th>
+          <th>dane</th>
+          <th>akcje</th>
         </tr>
-      </ng-container>
-    </tbody>
-  </table>
-  <div class="summary">
-    <p>Do zapłaty: {{getCartPrice()}}</p>
+      </thead>
+      <tbody id="tableBody">
+        <ng-container *ngFor="let object of this.mainService.cart">
+          <tr style="background-color: whitesmoke;">
+            <td>
+              <img src="{{object.product.thumbnail}}" alt="">
+            </td>
+            <td>
+              <ul>
+                <li>Tytuł: {{object.product.title}}</li>
+                <li>Cena: {{object.product.price}}</li>
+                <li>Kategoria: {{object.product.category}}</li>
+              </ul>
+            </td>
+            <td>
+              <button (click)="removeFromCart(object)">Usuń z koszyka</button>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+    <div class="sideTable"></div>
   </div>
-  <div class="payment">
-    <div id="paypal">
+  <div class="wrapper">
+    <div class="summary">
+      <p>Do zapłaty: {{getCartPrice()}}</p>
     </div>
-    <form action="http://www.jakubadamus.cba.pl/paypal.php" method="get" #paymentForm>
-      <input type="text" #firstName name="firstName" id="" placeholder="Imie">
-      <input type="text" #lastName name="lastName" id="" placeholder="Nazwisko">
-      <input type="text" #email name="email" id="" placeholder="Email">
-      <input type="text" name="phone" id="" placeholder="Telefon">
-      <ng-container *ngFor="let object of this.mainService.cart">
-        <input type="hidden" name="products[]" value="{{ object | json }}">
-      </ng-container>
-      <label for="">Akceptuję regulamin:<input #regulamin type="checkbox" name="aggrement" id="" (change)="0"></label>
-      <button [disabled]="!regulamin.checked" (click)="paymentForm.submit()">Kup</button>
-    </form>
+    <div id="paypal">PayPal photo</div>
+    <div class="wrapper_form">
+      <form action="http://www.jakubadamus.cba.pl/paypal.php" method="get" #paymentForm>
+        <div class="inputItem" >
+          <input type="text" #firstName name="firstName" id="" placeholder="Imie">
+          <input type="text" #lastName name="lastName" id="" placeholder="Nazwisko">
+          <input type="text" #email name="email" id="" placeholder="Email">
+          <input type="text" name="phone" id="" placeholder="Telefon">
+        </div>
+        <ng-container *ngFor="let object of this.mainService.cart">
+          <input type="hidden" name="products[]" value="{{ object | json }}">
+        </ng-container>
+        <div class="inputItem">
+          <label for="" class="item">Akceptuję regulamin:<input #regulamin type="checkbox" name="aggrement" id="" (change)="0" class=""></label>
+          <button [disabled]="!regulamin.checked" (click)="paymentForm.submit()">Kup</button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
-<button routerLink='/landing'>Powrót</button>

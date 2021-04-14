@@ -4,7 +4,7 @@
     <div class="content-header">
       <h2>ADMIN PRODUCTS</h2>
     </div>
-    <button (click)="this.MainService.getProducts()">Odśwież</button>
+    <button (click)="this.mainService.getProducts(this.mainService.productsRequest)">Odśwież</button>
     <div class="content-container">
       <table style="margin: 0 auto;">
         <thead>
@@ -30,13 +30,13 @@
             </select>
           </td>
           <td>
-            <button (click)="this.MainService.addProduct(newProduct)">Dodaj</button>
+            <button (click)="this.mainService.addProduct(newProduct)">Dodaj</button>
           </td>
         </tr>
       </tbody>
     </table>
     <table style="margin:0 auto;" id="productsTable">
-      <thead *ngIf="this.MainService.products">
+      <thead *ngIf="this.mainService.products">
         <tr>
           <th>obrazek</th>
           <th>dane</th>
@@ -44,7 +44,7 @@
         </tr>
       </thead>
       <tbody>
-        <ng-container *ngFor="let product of this.MainService.products?.productsTable">
+        <ng-container *ngFor="let product of this.mainService.products?.productsTable">
           <tr style="background-color: whitesmoke;">
             <td>
               <img src="{{product.thumbnail}}" alt="">
@@ -57,7 +57,7 @@
               </ul>
             </td>
             <td>
-              <button (click)="this.MainService.removeProduct(product.id)">Usuń</button>
+              <button (click)="this.mainService.removeProduct(product.id)">Usuń</button>
             </td>
           </tr>
         </ng-container>

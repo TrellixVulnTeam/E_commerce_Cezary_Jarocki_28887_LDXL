@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-
   constructor(public mainService: MainService) { }
 
   ngOnInit(): void {
@@ -18,5 +17,11 @@ export class CartComponent implements OnInit {
       price += parseFloat(object.product.price);
     }
     return price;
+  }
+  removeFromCart(product: any): void{
+    const index = this.mainService.cart.indexOf(product, 0);
+    if (index > -1){
+      this.mainService.cart.splice(index, 1);
+    }
   }
 }

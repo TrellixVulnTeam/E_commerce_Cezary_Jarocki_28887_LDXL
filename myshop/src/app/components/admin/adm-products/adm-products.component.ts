@@ -8,8 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdmProductsComponent implements OnInit {
 
-  // tslint:disable-next-line: no-shadowed-variable
-  constructor(public MainService: MainService) { }
+  constructor(public mainService: MainService) { }
 
   newProduct = {
     thumbnail: '',
@@ -21,6 +20,6 @@ export class AdmProductsComponent implements OnInit {
   ngOnInit(): void {
   }
   getProducts(): void {
-    this.MainService.getProducts(this.MainService.productsRequest);
+    this.mainService.getProducts(this.mainService.productsRequest);
   }
 }
