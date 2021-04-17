@@ -118,3 +118,22 @@
   justify-content: flex-end;
   margin: auto;
 }
+
+
+.wrapper_parrent {
+  @include flexbox();
+  .wrapper_main_child{
+    @include flexbox();
+    @include flex(2 2 auto);
+    .wrapper_main_child_table{
+      @include flex(1 1 auto);
+    }
+    .wrapper_main_child_up{
+      @include flex(1 1 auto);
+    }
+  }
+  .wrapper_side_child{
+    @include flex(1 1 auto);
+    // Może jakieś reklamy later
+  }
+}

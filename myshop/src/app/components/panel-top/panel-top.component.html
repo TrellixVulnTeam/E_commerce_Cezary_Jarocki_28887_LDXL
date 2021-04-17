@@ -1,12 +1,13 @@
 <div class="wrapper">
-  <div class="wrapper_left" id="admbtn">
-    <button routerLink="/adm_dashboard">Admin</button>
-  </div>
+  <button routerLink="/adm_dashboard" id="admbtn"><fa-icon [icon]="['fas','tools']"></fa-icon></button>
   <div class="wrapper_right">
       <h2 class="item">NoLama</h2>
       <a routerLink="/landing">
-       <img src="https://via.placeholder.com/100" alt="">
-       </a>
+        <div class="img-div">
+       <!--img src="https://via.placeholder.com/100" alt=""-->
+       <img src="assets/photos/NoLama.png">
+      </div>
+      </a>
   </div>
   <div class="wrapper">
     <button id="cartBtn" routerLink="/cart">Koszyk: {{getCartQuantity()}} </button>

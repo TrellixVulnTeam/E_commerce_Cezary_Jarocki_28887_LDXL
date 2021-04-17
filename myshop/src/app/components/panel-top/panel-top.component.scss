@@ -66,12 +66,33 @@
 
 #admbtn {
   position: fixed;
+  margin: 0;
+  padding: 1.5rem;
   left: 2rem;
   bottom: 2rem;
+  transition-duration: 0.1s;
+  background-color: white;
+  border: 2px solid rgb(255, 10, 145);
+  box-shadow: 0 5px 20px -5px rgb(150, 150, 150);
+  border-radius: 100%;
+  color: rgb(255, 10, 145);
+  font-size: 2rem;
+}
+
+#admbtn:hover {
+  background-color: rgb(255, 10, 145);
+  color: white;
 }
 
 #cartBtn {
   position: fixed;
   right: 2rem;
   bottom: 2rem;
+}
+
+button img {
+  max-width: 50px;
+  max-height: 50px;
+  border-radius: 100%;
+  margin: auto;
 }

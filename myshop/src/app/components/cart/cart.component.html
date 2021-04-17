@@ -3,8 +3,8 @@
 <div class="body-wrapper">
   <div class="wrapper">
     <div class="sideTable"></div>
-    <table id="cartTable">
-      <thead *ngIf="this.mainService.products" id="tableHead">
+    <table *ngIf="this.mainService.products" id="cartTable">
+      <thead id="tableHead">
         <tr>
           <th>obrazek</th>
           <th>dane</th>
