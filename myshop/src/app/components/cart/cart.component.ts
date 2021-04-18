@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
+
   constructor(public mainService: MainService) { }
 
   ngOnInit(): void {
@@ -23,5 +24,9 @@ export class CartComponent implements OnInit {
     if (index > -1){
       this.mainService.cart.splice(index, 1);
     }
+  }
+  isUniqueItem(product: any): boolean{
+
+    return false;
   }
 }

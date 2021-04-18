@@ -19,4 +19,28 @@ export class PanelTopComponent implements OnInit {
     }
     return quantity;
   }
+  HideMe(): void {
+    const hid = document.getElementsByClassName('testowanko');
+    // tslint:disable-next-line: prefer-for-of
+    for (let i = 0; i < hid.length; i++) {
+      const h = hid[i] as HTMLElement;
+      if (h.style.display === 'none') {
+        h.style.display = 'block';
+      } else {
+        h.style.display = 'none';
+      }
+    }
+  }
+  scrollTop(): void {
+
+    let topEL = document.getElementById("scroll_top");
+
+    window.scrollTo({ top: 0, behavior: 'smooth'});
+
+    window.onscroll = () => {
+      window.scrollY > 500 // You can change the value if you want
+        ? (topEL!.style.display = 'block')
+        : (topEL!.style.display = 'none')
+    };
+  }
 }

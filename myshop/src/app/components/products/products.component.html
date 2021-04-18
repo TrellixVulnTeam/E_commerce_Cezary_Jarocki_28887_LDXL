@@ -6,9 +6,9 @@
     <table id="wrapper_main_child_table">
       <thead *ngIf="this.mainService.products" id="tableHead">
         <tr>
-          <th>obrazek</th>
-          <th>dane</th>
-          <th>akcje</th>
+          <th>Miniaturka</th>
+          <th>Opis</th>
+          <th>Akcje</th>
         </tr>
       </thead>
       <tbody id="tableBody">
@@ -25,13 +25,17 @@
               </ul>
             </td>
             <td>
-              <button (click)="addToCart(product)">Do koszyka</button>
+              <button (click)="addToCart(product)">
+                <span>W koszyku: </span>
+                <span class="product_counter">{{getProductCount(product)}}</span>
+              </button>
             </td>
           </tr>
         </ng-container>
       </tbody>
     </table>
-    <div class="wrapper_main_child_up">Tu coś będzie</div>
   </div>
   <div class="wrapper_side_child"></div>
 </div>
+
+<app-footer></app-footer>

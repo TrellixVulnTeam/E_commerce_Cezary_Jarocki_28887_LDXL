@@ -1,16 +1,21 @@
+<a routerLink="/cart" id="button_compound">
+  <div>
+    <p>{{getCartQuantity()}}</p>
+    <fa-icon [icon]="['fas','shopping-bag']"></fa-icon>
+  </div>
+</a>
 <div class="wrapper">
   <button routerLink="/adm_dashboard" id="admbtn"><fa-icon [icon]="['fas','tools']"></fa-icon></button>
+  <button id="scroll_top" (click)="scrollTop()"><fa-icon [icon]="['fas','arrow-up']"></fa-icon></button>
+  <!-- <button (click)="HideMe()">Test</button> -->
   <div class="wrapper_right">
       <h2 class="item">NoLama</h2>
       <a routerLink="/landing">
-        <div class="img-div">
        <!--img src="https://via.placeholder.com/100" alt=""-->
        <img src="assets/photos/NoLama.png">
-      </div>
       </a>
   </div>
   <div class="wrapper">
-    <button id="cartBtn" routerLink="/cart">Koszyk: {{getCartQuantity()}} </button>
     <input type="text" [(ngModel)]="this.mainService.productsRequest.name">
     <button (click)="this.mainService.getProducts(this.mainService.productsRequest)" routerLink="/products">Szukaj Produktu</button>
   </div>

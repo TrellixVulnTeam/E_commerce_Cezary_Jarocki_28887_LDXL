@@ -1,0 +1,49 @@
+@mixin flexbox() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin flex-flow($values) {
+  -webkit-box-flex-flow: $values;
+  -moz-box-flex-flow:  $values;
+  -webkit-flex-flow:  $values;
+  -ms-flex-flow:  $values;
+  flex-flow: $values;
+}
+
+@mixin flex($values) {
+  -webkit-box-flex: $values;
+  -moz-box-flex:  $values;
+  -webkit-flex:  $values;
+  -ms-flex:  $values;
+  flex:  $values;
+}
+
+@mixin justify-content($value) {
+  -webkit-box-justify-content: $value;
+  -moz-box-justify-content:  $value;
+  -webkit-justify-content:  $value;
+  -ms-justify-content:  $value;
+  justify-content:  $value;
+}
+
+@mixin width($value) {
+  -webkit-column-width: $value;
+  -moz-column-width: $value;
+  width: $value;
+}
+
+.wrapper {
+  @include flexbox();
+  @include flex-flow(row wrap);
+  background-color: rgb(46, 46, 46);
+  padding: 2vw;
+  span {
+    @include flex(1 1 auto);
+    text-align: center;
+    color: white;
+  }
+}

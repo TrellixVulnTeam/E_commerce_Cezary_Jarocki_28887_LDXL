@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MainService } from 'src/app/services/main.service';
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -21,5 +22,14 @@ export class ProductsComponent implements OnInit {
     this.mainService.cart.push({product});
     console.log('Dodano produkt do koszyka: ');
     console.log(product);
+  }
+  getProductCount(product: any): number {
+    let quantity = 0;
+    for (const p of this.mainService.cart) {
+      if(p.product === product) {
+        quantity += 1;
+      }
+    }
+    return quantity;
   }
 }

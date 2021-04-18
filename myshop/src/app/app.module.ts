@@ -15,7 +15,8 @@ import { AdmProductsComponent } from './components/admin/adm-products/adm-produc
 
 import { ChartsModule } from 'ng2-charts';
 import { FontAwesomeModule, FaIconLibrary} from '@fortawesome/angular-fontawesome';
-import { faTools } from '@fortawesome/free-solid-svg-icons';
+import { faTools, faShoppingBag, faArrowUp } from '@fortawesome/free-solid-svg-icons';
+import { FooterComponent } from './components/footer/footer.component';
 
 const appRoutes: Routes = [
   { path: 'cart', component: CartComponent},
@@ -35,7 +36,8 @@ const appRoutes: Routes = [
     CartComponent,
     DashboardComponent,
     MenuComponent,
-    AdmProductsComponent
+    AdmProductsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +52,6 @@ const appRoutes: Routes = [
 })
 export class AppModule {
   constructor(library: FaIconLibrary) {
-    library.addIcons(faTools);
+    library.addIcons(faTools, faShoppingBag, faArrowUp);
   }
 }
