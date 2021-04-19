@@ -1,3 +1,7 @@
+* {
+  font-family: Arial, sans-serif !important;
+}
+
 @mixin flexbox() {
   display: -webkit-box;
   display: -moz-box;
@@ -40,7 +44,7 @@
   @include flexbox();
   @include justify-content(flex-end);
   @include flex-flow(row wrap);
-  flex: 1 1 auto;
+  @include flex(1 1 auto);
   background-color: rgb(255, 10, 145);
 }
 
@@ -51,6 +55,59 @@
   @include width(100%);
   color: white;
   background-color: rgb(46, 46, 46);
+}
+
+.wrapper_panel {
+  @include flexbox();
+  @include flex-flow(row wrap);
+  @include width(100%);
+  color: white;
+  background-color: rgb(46, 46, 46);
+  padding: 1rem;
+  .panel_left {
+    @include flex(3 3 auto);
+    text-align: right;
+    margin: auto;
+    * {
+      @include width(70%);
+    }
+    input:focus {
+      outline: none;
+    };
+  };
+  .panel_right {
+    margin: auto 1rem;
+    text-align: left;
+    @include flex(1 1 auto);
+    button {
+      transition: 0.1s;
+      outline: none;
+      border: none;
+      height: 100%;
+      background-color: white;
+      color: rgb(255, 10, 145);
+      padding: 0.5rem;
+      @include flexbox();
+      @include flex-flow(row wrap);
+      justify-content: space-between;
+      fa-icon {
+        font-size: 1rem;
+        @include flex(1 1);
+        margin: auto;
+        margin-right: 0.5rem;
+      }
+      p {
+        font-size: 1rem;
+        @include flex(1 1);
+        margin: auto;
+        margin-right: 0.5rem;
+      }
+    }
+    button:hover {
+      color: white;
+      background-color: rgb(255, 10, 145);
+    }
+  };
 }
 
 .item {
@@ -90,6 +147,7 @@
 }
 #scroll_top {
   bottom: 2vw;
+  display: none;
 }
 img {
   max-width: 100px;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { MainService } from 'src/app/services/main.service';
 
 @Component({
@@ -7,6 +7,14 @@ import { MainService } from 'src/app/services/main.service';
   styleUrls: ['./panel-top.component.scss']
 })
 export class PanelTopComponent implements OnInit {
+
+  @HostListener('window:scroll')
+  scrollChange(): void {
+    let topEL = document.getElementById("scroll_top");
+      window.scrollY > 500 
+        ? (topEL!.style.display = 'block')
+        : (topEL!.style.display = 'none');
+  }
 
   constructor(public mainService: MainService) { }
 
@@ -32,15 +40,6 @@ export class PanelTopComponent implements OnInit {
     }
   }
   scrollTop(): void {
-
-    let topEL = document.getElementById("scroll_top");
-
     window.scrollTo({ top: 0, behavior: 'smooth'});
-
-    window.onscroll = () => {
-      window.scrollY > 500 // You can change the value if you want
-        ? (topEL!.style.display = 'block')
-        : (topEL!.style.display = 'none')
-    };
   }
 }

@@ -15,8 +15,15 @@
        <img src="assets/photos/NoLama.png">
       </a>
   </div>
-  <div class="wrapper">
+  <div class="wrapper_panel">
+  <div class="panel_left">
     <input type="text" [(ngModel)]="this.mainService.productsRequest.name">
-    <button (click)="this.mainService.getProducts(this.mainService.productsRequest)" routerLink="/products">Szukaj Produktu</button>
+  </div>
+  <div class="panel_right">
+    <button (click)="this.mainService.getProducts(this.mainService.productsRequest)" routerLink="/products">
+      <fa-icon [icon]="['fas','search']"></fa-icon>
+      <p>Szukaj</p>
+    </button>
+  </div>
   </div>
 </div>

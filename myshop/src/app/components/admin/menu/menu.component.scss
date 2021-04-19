@@ -1,0 +1,109 @@
+* {
+  font-family: Arial, sans-serif !important;
+}
+
+@mixin flexbox() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin flex-flow($values) {
+  -webkit-box-flex-flow: $values;
+  -moz-box-flex-flow:  $values;
+  -webkit-flex-flow:  $values;
+  -ms-flex-flow:  $values;
+  flex-flow: $values;
+}
+
+@mixin flex($values) {
+  -webkit-box-flex: $values;
+  -moz-box-flex:  $values;
+  -webkit-flex:  $values;
+  -ms-flex:  $values;
+  flex:  $values;
+}
+
+@mixin justify-content($value) {
+  -webkit-box-justify-content: $value;
+  -moz-box-justify-content:  $value;
+  -webkit-justify-content:  $value;
+  -ms-justify-content:  $value;
+  justify-content:  $value;
+}
+
+@mixin width($value) {
+  -webkit-column-width: $value;
+  -moz-column-width: $value;
+  width: $value;
+}
+
+.side_nav {
+  @include flexbox();
+  @include flex-flow(row wrap);
+  @include flex(1 1);
+  position: sticky;
+  height: 100vh;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+  a {
+    padding: 6px 16px 6px 16px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #818181;
+    display: block;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+  }
+  a:hover {
+    color: white;
+    background-color: rgb(255, 10, 145);
+  }
+  div {
+    @include flex(1 1 auto);
+  }
+  .show_button {
+    text-align: center;
+    height: 8vh;
+    padding: 6px 16px 6px 16px;
+    color: #818181;
+    font-size: 1.2rem;
+  }
+  .show_button:hover {
+    color: white;
+    background-color: rgb(255, 10, 145);
+  }
+}
+
+#scroll_top {
+  position: fixed;
+  margin: auto;
+  padding: 1vw;
+  transition-duration: 0.1s;
+  background-color: white;
+  border: 2px solid rgb(255, 10, 145);
+  box-shadow: 0 5px 10px -5px black;
+  color: rgb(255, 10, 145);
+  font-size: 1.5rem;
+}
+
+#scroll_top:hover {
+  background-color: rgb(255, 10, 145);
+  color: white;
+}
+
+#scroll_top {
+  bottom: 2vw;
+  left: 0;
+  right: 0;
+  display: none;
+}

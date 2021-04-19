@@ -1,0 +1,117 @@
+* {
+  font-family: Arial, sans-serif !important;
+}
+
+@mixin flexbox() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin flex-flow($values) {
+  -webkit-box-flex-flow: $values;
+  -moz-box-flex-flow:  $values;
+  -webkit-flex-flow:  $values;
+  -ms-flex-flow:  $values;
+  flex-flow: $values;
+}
+
+@mixin flex($values) {
+  -webkit-box-flex: $values;
+  -moz-box-flex:  $values;
+  -webkit-flex:  $values;
+  -ms-flex:  $values;
+  flex:  $values;
+}
+
+@mixin justify-content($value) {
+  -webkit-box-justify-content: $value;
+  -moz-box-justify-content:  $value;
+  -webkit-justify-content:  $value;
+  -ms-justify-content:  $value;
+  justify-content:  $value;
+}
+
+@mixin width($value) {
+  -webkit-column-width: $value;
+  -moz-column-width: $value;
+  width: $value;
+}
+
+#update_button {
+  position: fixed;
+  margin: auto;
+  padding: 1vw;
+  transition-duration: 0.1s;
+  background-color: white;
+  border: 2px solid rgb(255, 10, 145);
+  box-shadow: 0 5px 10px -5px black;
+  color: rgb(255, 10, 145);
+  font-size: 1.5rem;
+}
+
+#update_button:hover {
+  background-color: rgb(255, 10, 145);
+  color: white;
+}
+
+#update_button {
+  right: 2vw;
+  bottom: 2vw;
+}
+
+.wrapper {
+  @include flexbox();
+  background-color: rgb(255, 253, 235);
+  .content {
+    padding: 2rem;
+    @include flexbox();
+    @include flex-flow(column wrap);
+    @include flex(8 8);
+    @include justify-content(center);
+    @include width(100%);
+    div {
+      margin: 1rem auto;
+      @include width(50vw);
+      @include flexbox();
+      @include flex-flow(column wrap);
+      *{
+        margin: auto;
+        text-align: center;
+      }
+      table {
+        @include width(100%);
+        thead {
+          table-layout: auto;
+          color: white;
+          background-color: rgb(255, 10, 145);
+          th {
+            padding: 6px 16px 6px 16px;
+          }
+        }
+        tbody {
+          td {
+            padding: 8px 0;
+          }
+          tr:nth-child(even) {
+            background-color: rgb(255, 161, 217);
+          }
+        }
+      }
+    }
+    .content-container {
+      overflow-x: auto;
+      border:5px solid rgb(255, 10, 145);
+    }
+    .content-draw {
+      border:5px solid rgb(255, 10, 145);
+    }
+  }
+}
+.content-header {
+  padding: 6px 16px 6px 16px;
+  color: white;
+  background-color: rgb(255, 10, 145);
+}

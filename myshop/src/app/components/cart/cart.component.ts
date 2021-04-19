@@ -8,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartComponent implements OnInit {
 
-  constructor(public mainService: MainService) { }
+  uniqueCart: any[] = [];
+  map = new Map();
+
+  constructor(public mainService: MainService) {
+    this.uniqueItem();
+  }
 
   ngOnInit(): void {
   }
@@ -20,13 +25,27 @@ export class CartComponent implements OnInit {
     return price;
   }
   removeFromCart(product: any): void{
-    const index = this.mainService.cart.indexOf(product, 0);
+    const index = this.mainService.cart.findIndex((prod: any) => {
+      return prod.product.id === product.product.id;
+    });
     if (index > -1){
       this.mainService.cart.splice(index, 1);
+      const checkIndex = this.mainService.cart.findIndex((prod: any) => {
+        return prod.product.id === product.product.id;
+      });
+      if(checkIndex === -1){
+        const uniqueIndex = this.uniqueCart.indexOf(product, 0);
+        this.map.delete(product.product.id);
+        this.uniqueCart.splice(uniqueIndex, 1);
+      }
     }
   }
-  isUniqueItem(product: any): boolean{
-
-    return false;
+  uniqueItem(): void{
+    for (const product of this.mainService.cart) {
+      if(!this.map.has(product.product.id)){
+          this.map.set(product.product.id, true);
+          this.uniqueCart.push(product);
+      }
+    }
   }
 }

@@ -12,7 +12,7 @@
         </tr>
       </thead>
       <tbody id="tableBody">
-        <ng-container *ngFor="let object of this.mainService.cart">
+        <ng-container *ngFor="let object of this.uniqueCart">
           <tr style="background-color: whitesmoke;">
             <td>
               <img src="{{object.product.thumbnail}}" alt="">

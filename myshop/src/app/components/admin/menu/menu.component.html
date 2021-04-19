@@ -1,10 +1,16 @@
-<div style="display: flex;flex-direction: column;width:120px">
-  <button routerLink="/adm_dashboard">Dashboard</button>
-  <button routerLink="/adm_products">Produkty</button>
-  <button>Zamówienia</button>
-  <button>Użytkownicy</button>
-  <button>Newsletter</button>
-  <button>Logi</button>
-  <button>Ustawienia</button>
-  <button routerLink="/landing">Powrót do sklepu</button>
+<button id="scroll_top" (click)="scrollTop()"><fa-icon [icon]="['fas','arrow-up']"></fa-icon></button>
+<div class="side_nav">
+  <div>
+    <a routerLink="/adm_dashboard">Dashboard</a>
+    <a routerLink="/adm_products">Produkty</a>
+    <a>Zamówienia</a>
+    <a>Użytkownicy</a>
+    <a>Newsletter</a>
+    <a>Logi</a>
+    <a>Ustawienia</a>
+    <a routerLink="/landing">Powrót do sklepu</a>
+  </div>
+  <!-- <div class="show_button">
+    <p>Rozwiń</p>
+  </div> -->
 </div>

@@ -1,11 +1,11 @@
-<div style="display: flex;flex-direction: row;">
+<button mat-button mat-raised-button color="primary"(click)="randomize()" id="update_button">Update</button>
+<div class="wrapper">
   <app-menu></app-menu>
-  <div class="content" style="width: 100%;">
+  <div class="content">
     <div class="content-header">
       <h2>DASHBOARD</h2>
     </div>
-    <div style="width: 60%;">
-      <div style="display: block">
+    <div class="content-draw">
         <canvas baseChart
         [datasets]="barChartData"
         [labels]="barChartLabels"
@@ -13,11 +13,12 @@
         [plugins]="barChartPlugins"
         [legend]="barChartLegend"
         [chartType]="barChartType">
-        </canvas></div><button mat-button mat-raised-button color="primary"
-        (click)="randomize()">Update</button>
-      </div>
-    <div class="content-container">
+        </canvas>
+    </div>
+    <div class="content-header">
       <h2>Zamówienia</h2>
+    </div>
+    <div class="content-container">
       <table>
         <thead>
           <tr>

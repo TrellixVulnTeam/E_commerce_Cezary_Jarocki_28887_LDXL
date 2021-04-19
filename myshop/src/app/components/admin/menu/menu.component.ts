@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
+  @HostListener('window:scroll')
+  scrollChange(): void {
+    let topEL = document.getElementById("scroll_top");
+      window.scrollY > 500
+        ? (topEL!.style.display = 'block')
+        : (topEL!.style.display = 'none');
+  }
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  scrollTop(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth'});
+  }
 }
