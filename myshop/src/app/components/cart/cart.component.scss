@@ -38,105 +38,162 @@
   -moz-column-width: $value;
   width: $value;
 }
-
-.wrapper_right {
-  @include flexbox();
-  @include justify-content(flex-end);
-  @include flex-flow(row wrap);
-  @include width(50%);
-}
-
-.wrapper_left {
-  @include flexbox();
-  @include justify-content(flex-start);
-  @include flex-flow(row wrap);
-  @include width(50%);
-}
-
-#cartTable
-{
-  margin: 0 auto;
-  @include flex(1 1 auto);
-  img
-  {
-    width: 200px;
-    max-width: 100%;
-  };
-  td
-  {
-    padding: 20px;
-  }
-  thead {
-    @include width(100%);
-  }
-  tbody {
-    @include width(100%);
-  }
-}
-
-.wrapper {
-  @include flexbox();
-  @include flex-flow(row wrap);
-  @include justify-content(center);
-  @include width(100%);
-  background-color:darkgoldenrod;
-}
-
-.wrapper_form {
-  @include flexbox();
-  @include flex-flow(row wrap);
-  @include justify-content(center);
-  @include width(100%);
-  margin: auto;
-  background-color: chocolate;
-  padding: 20px;
-}
-
-.body-wrapper {
-  min-height: 70vh;
-  background-color: aqua;
-}
-
-.sideTable {
-  @include flex(1 1 auto);
-  min-height: 50vh;
-}
-#tableHead {
-  @include width(100%);
-  background-color: magenta;
-}
-
-.summary {
-  @extend .wrapper;
-  background-color: beige;
-}
-
-#paypal {
-  @extend .wrapper;
-  background-color: brown;
-}
-
-.inputItem {
-  @include flexbox();
-  justify-content: flex-end;
-  margin: auto;
-}
-
-
 .wrapper_parrent {
   @include flexbox();
-  .wrapper_main_child{
+  @include flex-flow(row wrap);
+  @include justify-content(center);
+  @include width(100%);
+  min-height: 21vh;
+  background-color: rgb(255, 253, 235);
+  box-shadow: 0 0 20px -5px black inset;
+  .wrapper_main_child {
     @include flexbox();
-    @include flex(2 2 auto);
-    .wrapper_main_child_table{
-      @include flex(1 1 auto);
+    flex-direction: column; // zmienić
+    margin: auto;
+    @include flex(3 1);
+    table {
+      table-layout: auto;
+      margin: 20px auto;
+      @include width(100%);
+      text-align: center;
+      vertical-align: middle;
+      border-collapse: collapse;
+      thead {
+        background-color:rgb(255, 10, 145);
+        color: white;
+        th {
+          padding: 1vw;
+        }
+      };
+      img {
+        max-height: 100%;
+        max-width: 100px;
+      };
+      #tableBody tr {
+        background-color: rgb(255, 230, 245);
+        border-bottom: 0.1rem solid rgb(255, 10, 145);
+      }
+      #tableBody tr:hover {
+        background-color: rgb(255, 117, 193);;
+      }
+      ul li {
+        list-style: none;
+        text-align: left;
+        display: block;
+      }
+      button {
+        transition-duration: 0.1s;
+        background-color: white;
+        padding: 15px 20px;
+        font-size: 15px;
+        border: 2px solid rgb(255, 10, 145);
+        box-shadow: 0 5px 10px -5px black;
+        color: rgb(255, 10, 145);
+      }
+      button:hover {
+        background-color: rgb(255, 10, 145);
+        color: white;
+      }
     }
-    .wrapper_main_child_up{
+    .wrapper_main_child_up {
       @include flex(1 1 auto);
+      background-color: rgb(255, 127, 227);
     }
   }
-  .wrapper_side_child{
+  .wrapper_side_child {
     @include flex(1 1 auto);
     // Może jakieś reklamy later
+  }
+}
+.wrapper {
+  @include flexbox();
+  @include flex-flow(column wrap);
+  @include justify-content(center);
+  @include width(100%);
+  .wrapper_form {
+    @include flexbox();
+    @include flex-flow(row wrap);
+    @include justify-content(center);
+    background-color: rgb(255, 10, 145);
+    @include width(100%);
+    padding: 20px 0;
+    box-shadow: 0 0 20px -5px black inset;
+    form {
+      @include flexbox();
+      @include flex-flow(column wrap);
+      @include width(40%);
+      background-color: rgb(46, 46, 46);
+      box-shadow: 0 -2px 10px -5px black;
+      .inputItem {
+        @include flexbox();
+        @include flex-flow(row wrap);
+        @include width(100%);
+        @include justify-content(space-between);
+        background-color: rgb(255, 230, 245);
+        .left-50, .right-50 {
+          @include flex(1 1 auto);
+          @include flexbox();
+          @include flex-flow(column wrap);
+          *{
+            margin: 10px 15px;
+          }
+        }
+        .left-50p, .right-50p {
+          @include flexbox();
+          @include flex-flow(column wrap);
+          margin: auto;
+          *{
+            margin: 10px;
+          }
+        }
+      }
+      .checkItem {
+        @include flexbox();
+        @include width(100%);
+        @include justify-content(flex-end);
+        label {
+          @include flexbox();
+          @include flex-flow(row wrap);
+          @include justify-content(space-between);
+          margin: auto;
+          padding: 10px;
+          color: white;
+          * {
+            text-align: center;
+            margin: auto 5px;
+          }
+          button {
+            transition-duration: 0.1s;
+            background-color: rgb(46,46,46);
+            padding: 5px 10px;
+            font-size: 15px;
+            border: 2px solid rgb(255, 10, 145);
+            box-shadow: 0 5px 10px -5px black;
+            color: rgb(255, 10, 145);
+          }
+          #correct {
+            transition-duration: 0.1s;
+            background-color: white;
+            padding: 5px 10px;
+            font-size: 15px;
+            border: 2px solid rgb(255, 10, 145);
+            box-shadow: 0 5px 10px -5px black;
+            color: rgb(255, 10, 145);
+          }
+          #correct:hover {
+            background-color: rgb(255, 10, 145);
+            color: white;
+          }
+        }
+      }
+    }
+  }
+  .payment {
+    @include flexbox();
+    @include flex-flow(row wrap);
+    @include justify-content(center);
+    background-color: rgb(46, 46, 46);
+    color: white;
+    font-size: 1.5rem;
   }
 }

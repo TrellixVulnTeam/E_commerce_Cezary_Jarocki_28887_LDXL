@@ -46,6 +46,7 @@
   @include width(100%);
   min-height: 70vh;
   background-color: rgb(255, 253, 235);
+  box-shadow: 0 0 20px -5px black inset;
   .wrapper_main_child {
     @include flexbox();
     flex-direction: column; // zmienić
@@ -57,6 +58,8 @@
       @include width(100%);
       text-align: center;
       vertical-align: middle;
+      box-shadow: 0 0 10px -5px black;
+      border-collapse: collapse;
       thead {
         background-color:rgb(255, 10, 145);
         color: white;
@@ -70,9 +73,10 @@
       };
       #tableBody tr {
         background-color: rgb(255, 230, 245);
+        border-bottom: 0.1rem solid rgb(255, 10, 145);
       }
       #tableBody tr:hover {
-        background-color: rgb(255, 117, 193);;
+        background-color: rgb(255, 117, 193);
       }
       ul li {
         list-style: none;

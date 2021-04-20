@@ -1,21 +1,21 @@
 <app-panel-top></app-panel-top>
 
-<div class="body-wrapper">
-  <div class="wrapper">
-    <div class="sideTable"></div>
-    <table *ngIf="this.mainService.products" id="cartTable">
-      <thead id="tableHead">
+<div class="wrapper_parrent">
+  <div class="wrapper_side_child"></div>
+  <div class="wrapper_main_child">
+    <table id="wrapper_main_child_table">
+      <thead *ngIf="this.mainService.products" id="tableHead">
         <tr>
-          <th>obrazek</th>
-          <th>dane</th>
-          <th>akcje</th>
+          <th>Miniaturka</th>
+          <th>Opis</th>
+          <th>Akcje</th>
         </tr>
       </thead>
       <tbody id="tableBody">
         <ng-container *ngFor="let object of this.uniqueCart">
-          <tr style="background-color: whitesmoke;">
+          <tr>
             <td>
-              <img src="{{object.product.thumbnail}}" alt="">
+              <img src="{{object.product.thumbnail}}" alt="{{object.product.title}}">
             </td>
             <td>
               <ul>
@@ -25,36 +25,55 @@
               </ul>
             </td>
             <td>
-              <button (click)="removeFromCart(object)">Usuń z koszyka</button>
+              <button (click)="removeFromCart(object)">
+                <span>W koszyku: </span>
+                <span class="product_counter">{{getProductCount(object.product)}}</span>
+              </button>
             </td>
           </tr>
         </ng-container>
       </tbody>
     </table>
-    <div class="sideTable"></div>
   </div>
-  <div class="wrapper">
-    <div class="summary">
-      <p>Do zapłaty: {{getCartPrice()}}</p>
-    </div>
-    <div id="paypal">PayPal photo</div>
-    <div class="wrapper_form">
-      <form action="http://www.jakubadamus.cba.pl/paypal.php" method="get" #paymentForm>
-        <div class="inputItem" >
+  <div class="wrapper_side_child"></div>
+</div>
+<div class="wrapper">
+  <div class="payment"><p>Płatność</p></div>
+  <div class="wrapper_form">
+    <form action="http://www.jakubadamus.cba.pl/paypal.php" method="get" #paymentForm>
+      <div class="inputItem" style="background-color: rgb(46, 46, 46); color: white">
+        <div class="left-50p">
+            <img src="https://www.paypalobjects.com/webstatic/mktg/logo-center/banner_pl_payments_by_pp_165x56.png" alt="PayPal"/>
+        </div>
+        <div class="right-50p">
+            <p>Do zapłaty: {{getCartPrice()}}</p>
+        </div>
+      </div>
+      <div class="inputItem" >
+        <div class="left-50">
           <input type="text" #firstName name="firstName" id="" placeholder="Imie">
           <input type="text" #lastName name="lastName" id="" placeholder="Nazwisko">
+        </div>
+        <div class="right-50">
           <input type="text" #email name="email" id="" placeholder="Email">
           <input type="text" name="phone" id="" placeholder="Telefon">
         </div>
+      </div>
+      <div class="inputItem">
         <ng-container *ngFor="let object of this.mainService.cart">
           <input type="hidden" name="products[]" value="{{ object | json }}">
         </ng-container>
-        <div class="inputItem">
-          <label for="" class="item">Akceptuję regulamin:<input #regulamin type="checkbox" name="aggrement" id="" (change)="0" class=""></label>
-          <button [disabled]="!regulamin.checked" (click)="paymentForm.submit()">Kup</button>
+      </div>
+      <div class="checkItem">
+        <div>
+          <label for="" class="item">
+            <p>Akceptuję regulamin:</p>
+            <input #regulamin type="checkbox" name="aggrement" id="" (change)="0" (click)="changeToCorrect()">
+            <button [disabled]="!regulamin.checked" (click)="paymentForm.submit()" id="invalid">Kup</button>
+          </label>
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
   </div>
 </div>
 

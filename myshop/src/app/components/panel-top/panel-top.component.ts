@@ -10,9 +10,11 @@ export class PanelTopComponent implements OnInit {
 
   @HostListener('window:scroll')
   scrollChange(): void {
-    let topEL = document.getElementById("scroll_top");
-      window.scrollY > 500 
+    const topEL = document.getElementById('scroll_top');
+    window.scrollY > 500
+        // tslint:disable-next-line: no-non-null-assertion
         ? (topEL!.style.display = 'block')
+        // tslint:disable-next-line: no-non-null-assertion
         : (topEL!.style.display = 'none');
   }
 

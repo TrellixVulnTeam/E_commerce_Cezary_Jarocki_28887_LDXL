@@ -33,7 +33,7 @@ export class CartComponent implements OnInit {
       const checkIndex = this.mainService.cart.findIndex((prod: any) => {
         return prod.product.id === product.product.id;
       });
-      if(checkIndex === -1){
+      if (checkIndex === -1){
         const uniqueIndex = this.uniqueCart.indexOf(product, 0);
         this.map.delete(product.product.id);
         this.uniqueCart.splice(uniqueIndex, 1);
@@ -42,10 +42,27 @@ export class CartComponent implements OnInit {
   }
   uniqueItem(): void{
     for (const product of this.mainService.cart) {
-      if(!this.map.has(product.product.id)){
+      if (!this.map.has(product.product.id)){
           this.map.set(product.product.id, true);
           this.uniqueCart.push(product);
       }
     }
+  }
+  getProductCount(product: any): number {
+    let quantity = 0;
+    for (const p of this.mainService.cart) {
+      if (p.product.id === product.id) {
+        quantity += 1;
+      }
+    }
+    return quantity;
+  }
+  changeToCorrect(): void {
+    const inv = document.getElementById('invalid');
+    const v = document.getElementById('correct');
+    // tslint:disable-next-line: no-non-null-assertion
+    if (inv === null) { v!.id = 'invalid'; }
+    // tslint:disable-next-line: no-non-null-assertion
+    else { inv!.id = 'correct'; }
   }
 }

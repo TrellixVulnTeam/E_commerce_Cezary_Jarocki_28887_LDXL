@@ -25,8 +25,8 @@ export class ProductsComponent implements OnInit {
   }
   getProductCount(product: any): number {
     let quantity = 0;
-    for (const p of this.mainService.cart) {
-      if(p.product === product) {
+    for (const p of this.mainService?.cart) {
+      if (p.product.id === product.id) {
         quantity += 1;
       }
     }
