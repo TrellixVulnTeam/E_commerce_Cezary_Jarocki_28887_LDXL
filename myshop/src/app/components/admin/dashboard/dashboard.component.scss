@@ -43,10 +43,8 @@
 #update_button {
   position: fixed;
   margin: auto;
-  padding: 1vw;
   transition-duration: 0.1s;
   background-color: white;
-  border: 2px solid rgb(255, 10, 145);
   box-shadow: 0 5px 10px -5px black;
   color: rgb(255, 10, 145);
   font-size: 1.5rem;
@@ -64,49 +62,59 @@
 
 .wrapper {
   @include flexbox();
+  @include flex-flow(row nowrap);
   background-color: rgb(255, 253, 235);
-  .content {
-    padding: 2rem;
+  box-shadow: 0 0 20px -5px black inset;
+  .content-right {
     @include flexbox();
     @include flex-flow(column wrap);
     @include flex(8 8);
     @include justify-content(center);
-    @include width(100%);
-    div {
-      margin: 1rem auto;
-      @include width(50vw);
+    .content {
+      padding: 1rem;
       @include flexbox();
       @include flex-flow(column wrap);
-      *{
-        margin: auto;
-        text-align: center;
-      }
-      table {
-        @include width(100%);
-        thead {
-          table-layout: auto;
-          color: white;
-          background-color: rgb(255, 10, 145);
-          th {
-            padding: 6px 16px 6px 16px;
+      @include flex(8 8);
+      @include justify-content(center);
+      div {
+        margin: 1rem auto;
+        @include width(50vw);
+        @include flexbox();
+        @include flex-flow(column wrap);
+        *{
+          margin: auto;
+          text-align: center;
+        }
+        table {
+          @include width(100%);
+          thead {
+            table-layout: auto;
+            color: white;
+            background-color: rgb(255, 10, 145);
+            th {
+              padding: 6px 16px 6px 16px;
+            }
+          }
+          tbody {
+            td {
+              padding: 8px 0;
+            }
+            tr:nth-child(even) {
+              background-color: rgb(255, 161, 217);
+            }
           }
         }
-        tbody {
-          td {
-            padding: 8px 0;
-          }
-          tr:nth-child(even) {
-            background-color: rgb(255, 161, 217);
-          }
-        }
       }
-    }
-    .content-container {
-      overflow-x: auto;
-      border:5px solid rgb(255, 10, 145);
-    }
-    .content-draw {
-      border:5px solid rgb(255, 10, 145);
+      .content-container {
+        overflow-x: auto;
+        border:5px solid rgb(255, 10, 145);
+      }
+      .content-draw {
+        border:5px solid rgb(255, 10, 145);
+      }
+      .content-header {
+        background-color: rgb(46, 46, 46);
+      }
     }
   }
 }
@@ -114,4 +122,38 @@
   padding: 6px 16px 6px 16px;
   color: white;
   background-color: rgb(255, 10, 145);
+}
+
+#side_buttons {
+  display: none;
+  @include flex-flow(column wrap);
+  *:hover {
+    background-color: rgb(255, 10, 145);
+    color: white;
+  }
+  * {
+    background-color: white;
+    color: rgb(255, 10, 145);
+    border: 2px solid rgb(255, 10, 145);
+    padding: 1vw;
+    outline: none;
+    font-size: 1rem;
+  }
+}
+
+#main_button {
+  @include flexbox();
+  @include flex-flow(column wrap);
+  *:hover {
+    background-color: rgb(255, 10, 145);
+    color: white;
+  }
+  * {
+    background-color: white;
+    color: rgb(255, 10, 145);
+    border: 2px solid rgb(255, 10, 145);
+    padding: 1vw;
+    outline: none;
+    font-size: 1rem;
+  }
 }

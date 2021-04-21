@@ -4,12 +4,13 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class MainService {
-  constructor() {
-  }
+
+  constructor() { }
+
   @Injectable({
     providedIn: 'root'
   })
-   productsRequest = { // obiekt z kryteriami, na podstawie których będziemy szukać produktów
+  productsRequest = { // obiekt z kryteriami, na podstawie których będziemy szukać produktów
     action: 'getProducts',
     name: '',
     category: ''
@@ -32,12 +33,8 @@ export class MainService {
       xhttp.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
           const resultObject = JSON.parse(xhttp.responseText);
-
-          if (resultObject !== null) {
-            resolve(resultObject);
-          } else {
-            reject('Failed');
-          }
+          if (resultObject !== null) { resolve(resultObject); }
+          else { reject('Failed'); }
         }
       };
     });
@@ -52,9 +49,7 @@ export class MainService {
   addProduct(newProduct: any) {
     const s = new Promise((resolve, reject) => {
       const xhttp = new XMLHttpRequest();
-      const request = {
-        action: 'addProduct', newProduct
-      };
+      const request = { action: 'addProduct', newProduct };
       const SQL = ('object=' + encodeURIComponent(JSON.stringify(request)));
       console.log(this.apiPath + SQL);
       xhttp.open('GET', this.apiPath + SQL, true);
@@ -63,11 +58,8 @@ export class MainService {
       xhttp.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
           const resultObject = JSON.parse(xhttp.responseText);
-          if (resultObject !== null) {
-            resolve(resultObject);
-          } else {
-            reject('Failed');
-          }
+          if (resultObject !== null) { resolve(resultObject); }
+          else { reject('Failed'); }
         }
       };
     });
@@ -81,60 +73,52 @@ export class MainService {
   removeProduct(id: any) {
     const s = new Promise((resolve, reject) => {
       const xhttp = new XMLHttpRequest();
-      const request = {
-        action: 'removeProduct', id };
+      const request = { action: 'removeProduct', id };
       const SQL = ('object=' + encodeURIComponent(JSON.stringify(request)));
       console.log(this.apiPath + SQL);
       xhttp.open('GET', this.apiPath + SQL, true);
       xhttp.send();
       // tslint:disable-next-line: typedef
       xhttp.onreadystatechange = function() {
-          if (this.readyState === 4 && this.status === 200) {
-            const resultObject = JSON.parse(xhttp.responseText);
-            if (resultObject !== null) {
-              resolve(resultObject);
-            } else {
-              reject('Failed');
-            }
-          }
-        };
-      });
+        if (this.readyState === 4 && this.status === 200) {
+          const resultObject = JSON.parse(xhttp.responseText);
+          if (resultObject !== null) { resolve(resultObject); }
+          else { reject('Failed'); }
+        }
+      };
+    });
     s.then((onmessage: any) => {
-        console.log('Pomyślnie usunięto produkt!');
-      }).catch((onmessage) => {
-        console.log('Coś poszło nie tak podczas usuwania produktu!');
-      });
-    }
-    // tslint:disable-next-line: member-ordering
-    orders: any;
-    // tslint:disable-next-line: typedef
-    getOrders() {
-      const s = new Promise((resolve, reject) => {
-        const xhttp = new XMLHttpRequest();
-        // tslint:disable-next-line: prefer-const
-        let request = {
-          action: 'getOrders'
-        };
-        const SQL = ('object=' + encodeURIComponent(JSON.stringify(request)));
-        console.log(this.apiPath + SQL);
-        xhttp.open('GET', this.apiPath + SQL, true);
-        xhttp.send();
-        // tslint:disable-next-line: typedef
-        xhttp.onreadystatechange = function() {
-          if (this.readyState === 4 && this.status === 200) {
-            const resultObject = JSON.parse(xhttp.responseText);
-            if (resultObject !== null) {
-              resolve(resultObject);
-            } else {
-              reject('Failed');
-            }
-          }
-        };
-      });
-      s.then((onmessage: any) => {
-        console.log('Pomyślnie pobrano zamówienia!');
-        this.orders = onmessage; }).catch((onmessage) => {
-          console.log('Coś poszło nie tak podczas pobierania zamówień!');
-        });
-      }
+      console.log('Pomyślnie usunięto produkt!');
+    }).catch((onmessage) => {
+      console.log('Coś poszło nie tak podczas usuwania produktu!');
+    });
+  }
+  // tslint:disable-next-line: member-ordering
+  orders: any;
+  // tslint:disable-next-line: typedef
+  getOrders() {
+    const s = new Promise((resolve, reject) => {
+      const xhttp = new XMLHttpRequest();
+      const request = { action: 'getOrders' };
+      const SQL = ('object=' + encodeURIComponent(JSON.stringify(request)));
+      console.log(this.apiPath + SQL);
+      xhttp.open('GET', this.apiPath + SQL, true);
+      xhttp.send();
+      // tslint:disable-next-line: typedef
+      xhttp.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+          const resultObject = JSON.parse(xhttp.responseText);
+          if (resultObject !== null) { resolve(resultObject); }
+          else { reject('Failed'); }
+        }
+      };
+    });
+    s.then((onmessage: any) => {
+      console.log('Pomyślnie pobrano zamówienia!');
+      this.orders = onmessage;
+    }).catch((onmessage) => {
+      console.log('Coś poszło nie tak podczas pobierania zamówień!');
+    });
+    return s;
+  }
 }

@@ -2,15 +2,197 @@
   font-family: Arial, sans-serif !important;
 }
 
-#productsTable
-{
-  img
-  {
-    width: 300px;
-    max-width: 100%;
-  };
-  td
-  {
-    padding: 20px;
+@mixin flexbox() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin flex-flow($values) {
+  -webkit-box-flex-flow: $values;
+  -moz-box-flex-flow:  $values;
+  -webkit-flex-flow:  $values;
+  -ms-flex-flow:  $values;
+  flex-flow: $values;
+}
+
+@mixin flex($values) {
+  -webkit-box-flex: $values;
+  -moz-box-flex:  $values;
+  -webkit-flex:  $values;
+  -ms-flex:  $values;
+  flex:  $values;
+}
+
+@mixin justify-content($value) {
+  -webkit-box-justify-content: $value;
+  -moz-box-justify-content:  $value;
+  -webkit-justify-content:  $value;
+  -ms-justify-content:  $value;
+  justify-content:  $value;
+}
+
+@mixin width($value) {
+  -webkit-column-width: $value;
+  -moz-column-width: $value;
+  width: $value;
+}
+
+.wrapper {
+  @include flexbox();
+  @include flex-flow(row nowrap);
+  @include justify-content(center);
+  @include width(100%);
+  background-color: rgb(255, 253, 235);
+  box-shadow: 0 0 20px -5px black inset;
+  .content-right {
+    @include flexbox();
+    @include flex-flow(column wrap);
+    @include flex(8 8);
+    @include justify-content(center);
+    .content {
+      padding: 1rem;
+      @include flexbox();
+      @include flex-flow(column wrap);
+      @include flex(8 8);
+      @include justify-content(center);
+      div {
+        margin: 1rem auto;
+        @include width(50vw);
+        @include flexbox();
+        @include flex-flow(column wrap);
+        *{
+          margin: auto;
+          text-align: center;
+        }
+        table {
+          table-layout: auto;
+          @include width(100%);
+          text-align: center;
+          vertical-align: middle;
+          border-collapse: collapse;
+          thead {
+            background-color:rgb(46, 46, 46);
+            color: white;
+            th {
+              padding: 1vw;
+            }
+            tr {
+              border-bottom: 0.1rem solid rgb(255, 10, 145);
+            }
+          }
+          tbody {
+            td {
+              padding: 1vw;
+            }
+            tr {
+              background-color: rgb(255, 230, 245);
+              border-bottom: 0.1rem solid rgb(255, 10, 145);
+            }
+            tr:hover {
+              background-color: rgb(255, 117, 193);;
+            }
+          }
+          img {
+            max-width: 100px;
+          };
+          ul li {
+            list-style: none;
+            text-align: left;
+            display: block;
+          }
+          button {
+            transition-duration: 0.1s;
+            background-color: white;
+            border: 2px solid rgb(255, 10, 145);
+            color: rgb(255, 10, 145);
+          }
+          button:hover {
+            background-color: rgb(255, 10, 145);
+            color: white;
+          }
+          #add {
+            padding: 5px 5px;
+            font-size: 15px;
+          }
+          #delete {
+            box-shadow: 0 5px 10px -5px black;
+            padding: 15px 20px;
+            font-size: 15px;
+          }
+        }
+      }
+      .content-container {
+        overflow-x: auto;
+        border:5px solid rgb(255, 10, 145);
+      }
+      .content-draw {
+        border:5px solid rgb(255, 10, 145);
+      }
+      .content-header {
+        background-color: rgb(46, 46, 46);
+      }
+    }
   }
+}
+.content-header {
+  padding: 6px 16px 6px 16px;
+  color: white;
+  background-color: rgb(255, 10, 145);
+}
+
+#side_buttons {
+  display: none;
+  @include flex-flow(column wrap);
+  *:hover {
+    background-color: rgb(255, 10, 145);
+    color: white;
+  }
+  * {
+    background-color: white;
+    color: rgb(255, 10, 145);
+    border: 2px solid rgb(255, 10, 145);
+    padding: 1vw;
+    outline: none;
+    font-size: 1rem;
+  }
+}
+
+#main_button {
+  @include flexbox();
+  @include flex-flow(column wrap);
+  *:hover {
+    background-color: rgb(255, 10, 145);
+    color: white;
+  }
+  * {
+    background-color: white;
+    color: rgb(255, 10, 145);
+    border: 2px solid rgb(255, 10, 145);
+    padding: 1vw;
+    outline: none;
+    font-size: 1rem;
+  }
+}
+
+#update_button {
+  position: fixed;
+  margin: auto;
+  transition-duration: 0.1s;
+  background-color: white;
+  box-shadow: 0 5px 10px -5px black;
+  color: rgb(255, 10, 145);
+  font-size: 1.5rem;
+}
+
+#update_button:hover {
+  background-color: rgb(255, 10, 145);
+  color: white;
+}
+
+#update_button {
+  right: 2vw;
+  bottom: 2vw;
 }

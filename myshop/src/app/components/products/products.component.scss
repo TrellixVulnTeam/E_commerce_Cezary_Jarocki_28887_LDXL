@@ -61,7 +61,7 @@
       box-shadow: 0 0 10px -5px black;
       border-collapse: collapse;
       thead {
-        background-color:rgb(255, 10, 145);
+        background-color:rgb(46, 46, 46);
         color: white;
         th {
           padding: 1vw;
@@ -91,6 +91,7 @@
         border: 2px solid rgb(255, 10, 145);
         box-shadow: 0 5px 10px -5px black;
         color: rgb(255, 10, 145);
+        outline: none;
       }
       button:hover {
         background-color: rgb(255, 10, 145);

@@ -18,8 +18,35 @@ export class AdmProductsComponent implements OnInit {
   };
 
   ngOnInit(): void {
+    this.showUpdateOptions();
   }
   getProducts(): void {
     this.mainService.getProducts(this.mainService.productsRequest);
+  }
+  showUpdateOptions(): void {
+    const d = document.getElementById('side_buttons');
+    if (d?.style.display === 'none') {
+      // tslint:disable-next-line: no-non-null-assertion
+      d!.style.display = 'flex';
+    } else {
+      // tslint:disable-next-line: no-non-null-assertion
+      d!.style.display = 'none';
+    }
+  }
+  hide(): void {
+    this.mainService.getProducts(this.mainService.productsRequest);
+    const hidden = document.getElementById('hide');
+    const d = document.getElementById('products-table');
+    if (d?.style.display === 'none') {
+      // tslint:disable-next-line: no-non-null-assertion
+      d!.style.display = 'flex';
+      // tslint:disable-next-line: no-non-null-assertion
+      hidden!.innerText = 'Ukryj produkty';
+    } else {
+      // tslint:disable-next-line: no-non-null-assertion
+      d!.style.display = 'none';
+      // tslint:disable-next-line: no-non-null-assertion
+      hidden!.innerText = 'Pokaż produkty';
+    }
   }
 }

@@ -45,7 +45,7 @@
   @include flex-flow(row wrap);
   @include flex(1 1);
   position: sticky;
-  height: 100vh;
+  min-height: 100vh;
   z-index: 1;
   top: 0;
   left: 0;
@@ -94,16 +94,14 @@
   box-shadow: 0 5px 10px -5px black;
   color: rgb(255, 10, 145);
   font-size: 1.5rem;
+  outline: none;
+  display: none;
+  bottom: 2vw;
+  left: 0;
+  right: 0;
 }
 
 #scroll_top:hover {
   background-color: rgb(255, 10, 145);
   color: white;
-}
-
-#scroll_top {
-  bottom: 2vw;
-  left: 0;
-  right: 0;
-  display: none;
 }
