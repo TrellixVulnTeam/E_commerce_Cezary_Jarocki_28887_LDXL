@@ -77,7 +77,7 @@
             background-color:rgb(46, 46, 46);
             color: white;
             th {
-              padding: 1vw;
+              padding: 1rem;
             }
             tr {
               border-bottom: 0.1rem solid rgb(255, 10, 145);
@@ -85,7 +85,7 @@
           }
           tbody {
             td {
-              padding: 1vw;
+              padding: 1rem;
             }
             tr {
               background-color: rgb(255, 230, 245);
@@ -154,7 +154,7 @@
     background-color: white;
     color: rgb(255, 10, 145);
     border: 2px solid rgb(255, 10, 145);
-    padding: 1vw;
+    padding: 1rem;
     outline: none;
     font-size: 1rem;
   }
@@ -171,7 +171,7 @@
     background-color: white;
     color: rgb(255, 10, 145);
     border: 2px solid rgb(255, 10, 145);
-    padding: 1vw;
+    padding: 1rem;
     outline: none;
     font-size: 1rem;
   }
@@ -193,6 +193,6 @@
 }
 
 #update_button {
-  right: 2vw;
-  bottom: 2vw;
+  right: 2rem;
+  bottom: 2rem;
 }

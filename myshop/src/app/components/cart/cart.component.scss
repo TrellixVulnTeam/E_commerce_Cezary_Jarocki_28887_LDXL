@@ -44,7 +44,10 @@
   @include justify-content(center);
   @include width(100%);
   min-height: 21vh;
-  background-color: rgb(255, 253, 235);
+  background-image: url('../../../assets/photos/landscape3.png');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
   box-shadow: 0 0 20px -5px black inset;
   .wrapper_main_child {
     @include flexbox();
@@ -63,6 +66,10 @@
         color: white;
         th {
           padding: 1vw;
+          * {
+            display: inline-block;
+            margin: 5px;
+          }
         }
       };
       img {
@@ -114,7 +121,7 @@
     @include flexbox();
     @include flex-flow(row wrap);
     @include justify-content(center);
-    background-color: rgb(255, 10, 145);
+    background-color: rgb(255, 253, 235);
     @include width(100%);
     padding: 20px 0;
     box-shadow: 0 0 20px -5px black inset;
@@ -142,15 +149,12 @@
           @include flexbox();
           @include flex-flow(column wrap);
           margin: auto;
-          *{
-            margin: 10px;
-          }
         }
       }
       .checkItem {
         @include flexbox();
         @include width(100%);
-        @include justify-content(flex-end);
+        @include justify-content(space-between);
         label {
           @include flexbox();
           @include flex-flow(row wrap);
@@ -196,5 +200,12 @@
     background-color: rgb(46, 46, 46);
     color: white;
     font-size: 1.5rem;
+  }
+}
+.left-50p, .right-50p {
+  margin: auto 0;
+  *{
+    color: white;
+    margin: 15px;
   }
 }

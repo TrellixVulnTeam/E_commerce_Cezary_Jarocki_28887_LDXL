@@ -20,9 +20,28 @@ export class MenuComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.hide();
   }
 
   scrollTop(): void {
     window.scrollTo({ top: 0, behavior: 'smooth'});
+  }
+  hide(): void {
+    const btn = document.getElementById('links');
+
+    if (btn?.className === 'm-fadeIn') {
+      btn.className = 'm-fadeOut';
+      // tslint:disable-next-line: no-non-null-assertion
+      document.getElementById('show')!.getElementsByTagName('fa-icon')[0].className = 'm-fadeIn';
+      // tslint:disable-next-line: no-non-null-assertion
+      document.getElementById('show')!.getElementsByTagName('fa-icon')[1].className = 'm-fadeOut';
+    } else {
+      // tslint:disable-next-line: no-non-null-assertion
+      btn!.className = 'm-fadeIn';
+      // tslint:disable-next-line: no-non-null-assertion
+      document.getElementById('show')!.getElementsByTagName('fa-icon')[0].className = 'm-fadeOut';
+      // tslint:disable-next-line: no-non-null-assertion
+      document.getElementById('show')!.getElementsByTagName('fa-icon')[1].className = 'm-fadeIn';
+    }
   }
 }

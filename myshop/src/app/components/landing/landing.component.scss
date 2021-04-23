@@ -1,3 +1,86 @@
 * {
   font-family: Arial, sans-serif !important;
 }
+@mixin flexbox() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin flex-flow($values) {
+  -webkit-box-flex-flow: $values;
+  -moz-box-flex-flow:  $values;
+  -webkit-flex-flow:  $values;
+  -ms-flex-flow:  $values;
+  flex-flow: $values;
+}
+
+@mixin flex($values) {
+  -webkit-box-flex: $values;
+  -moz-box-flex:  $values;
+  -webkit-flex:  $values;
+  -ms-flex:  $values;
+  flex:  $values;
+}
+
+@mixin justify-content($value) {
+  -webkit-box-justify-content: $value;
+  -moz-box-justify-content:  $value;
+  -webkit-justify-content:  $value;
+  -ms-justify-content:  $value;
+  justify-content:  $value;
+}
+
+@mixin width($value) {
+  -webkit-column-width: $value;
+  -moz-column-width: $value;
+  width: $value;
+}
+.land {
+  @include width(100%);
+  background-color: rgb(255, 253, 235);
+  box-shadow: 0 0 20px -5px black inset;
+  .wrapper {
+    @include flexbox();
+    @include flex-flow(row nowrap);
+    @include width(100%);
+    .main_element {
+      @include flex(3 3);
+      padding: 1rem;
+      h2 {
+        padding: 1rem;
+        color: white;
+      }
+      .content {
+        margin: auto;
+        padding: 0 1rem;
+        color: white;
+      }
+    }
+    .side_element {
+      @include flex(1 1);
+    }
+  }
+}
+.first {
+  background-image: url('../../../assets/photos/landscape3.png');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 0 0 20px -5px black inset;
+}
+.third {
+  background-image: url('../../../assets/photos/landscape3.png');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 0 0 20px -5px black inset;
+}
+.second {
+  background-color: rgb(255, 10, 145);
+  .main_element {
+    background-color: rgb(255, 10, 145);
+  }
+}

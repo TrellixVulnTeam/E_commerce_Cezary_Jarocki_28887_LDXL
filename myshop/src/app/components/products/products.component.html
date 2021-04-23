@@ -8,9 +8,13 @@
     <table id="wrapper_main_child_table">
       <thead *ngIf="this.mainService.products" id="tableHead">
         <tr>
-          <th>Miniaturka</th>
+          <th>
+            <p>Miniaturka</p><fa-icon [icon]="['fas','image']"></fa-icon>
+          </th>
           <th>Opis</th>
-          <th>Akcje</th>
+          <th>
+            <p>Akcje</p><fa-icon [icon]="['fas','plus-square']"></fa-icon>
+          </th>
         </tr>
       </thead>
       <tbody id="tableBody">
