@@ -51,6 +51,23 @@
       display:block;
     }
   }
+  .item {
+    margin: auto 1.5rem;
+    letter-spacing: 1px;
+  }
+}
+
+.wrapper_left {
+  @include flexbox();
+  @include justify-content(flex-start);
+  @include flex-flow(row wrap);
+  @include flex(1 1 auto);
+  background-color: rgb(255, 10, 145);
+  a {
+    * {
+      display:block;
+    }
+  }
 }
 
 .wrapper {
@@ -66,57 +83,95 @@
   @include flexbox();
   @include flex-flow(row wrap);
   @include width(100%);
-  color: white;
   background-color: rgb(46, 46, 46);
-  padding: 1rem;
-  .panel_left {
-    @include flex(3 3 auto);
-    text-align: right;
-    margin: auto;
-    * {
-      @include width(70%);
-    }
-    input:focus {
-      outline: none;
-    };
-  };
-  .panel_right {
-    margin: auto 1rem;
-    text-align: left;
-    @include flex(1 1 auto);
-    button {
-      transition: 0.1s;
-      outline: none;
-      border: none;
-      height: 100%;
-      background-color: white;
-      color: rgb(255, 10, 145);
-      padding: 0.5rem;
+  .main_panel {
+    @include flexbox();
+    @include flex-flow(row wrap);
+    @include justify-content(space-between);
+    @include flex(3 3);
+    padding: 0.5rem;
+    color: white;
+    .searchbar {
+      @include flex(20 20 auto);
       @include flexbox();
       @include flex-flow(row wrap);
-      justify-content: space-between;
-      fa-icon {
-        font-size: 1rem;
-        @include flex(1 1);
-        margin: auto;
-        margin-right: 0.5rem;
+    }
+    .panel_left {
+      @include flex(20 20 auto);
+      padding: 0.5rem;
+      margin: auto;
+      * {
+        @include width(100%);
       }
-      p {
-        font-size: 1rem;
-        @include flex(1 1);
+      input:focus {
+        outline: none;
+      };
+    };
+    .panel_right {
+      @include flex(1 1 auto);
+      padding: 0.5rem;
+      margin: auto;
+      button {
         margin: auto;
-        margin-right: 0.5rem;
+        transition: 0.1s;
+        outline: none;
+        border: none;
+        height: 100%;
+        background-color: white;
+        color: rgb(255, 10, 145);
+        padding: 0.5rem;
+        @include flexbox();
+        @include flex-flow(row wrap);
+        justify-content: space-between;
+        fa-icon {
+          font-size: 1rem;
+          @include flex(1 1);
+          margin: auto;
+          margin-right: 0.5rem;
+        }
+        p {
+          font-size: 1rem;
+          @include flex(1 1);
+          margin: auto;
+          margin-right: 0.5rem;
+        }
+      }
+      button:hover {
+        color: white;
+        background-color: rgb(255, 10, 145);
+        cursor: pointer;
       }
     }
-    button:hover {
-      color: white;
-      background-color: rgb(255, 10, 145);
+    .navbar {
+      @include flex(1 1 auto);
+      margin: auto;
+      ul {
+        @include flexbox();
+        @include flex-flow(row nowrap);
+        list-style-type: none;
+        margin: auto;
+        padding: 0;
+        overflow: hidden;
+      }
+      li {
+        @include flex(1 1 auto);
+        a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+        a:hover {
+          background-color: rgb(255, 10, 145);
+          cursor: pointer;
+        }
+      }
     }
   };
-}
-
-.item {
-  margin: auto 2rem;
+  .side_panel {
+    @include flex(1 1 auto);
+  }
 }
 
 #admbtn, #cartBtn, #scroll_top, #cart_price {
@@ -135,6 +190,7 @@
 #admbtn:hover, #cartBtn:hover, #scroll_top:hover {
   background-color: rgb(255, 10, 145);
   color: white;
+  cursor: pointer;
 }
 
 #admbtn {
@@ -186,4 +242,5 @@ img {
 #button_compound div:hover {
   background-color: rgb(255, 10, 145);
   color: white;
+  cursor: pointer;
 }

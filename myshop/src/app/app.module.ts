@@ -12,12 +12,13 @@ import { CartComponent } from './components/cart/cart.component';
 import { DashboardComponent } from './components/admin/dashboard/dashboard.component';
 import { MenuComponent } from './components/admin/menu/menu.component';
 import { AdmProductsComponent } from './components/admin/adm-products/adm-products.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { OrdersComponent } from './components/admin/orders/orders.component';
 
 import { ChartsModule } from 'ng2-charts';
 import { FontAwesomeModule, FaIconLibrary} from '@fortawesome/angular-fontawesome';
 import { faTools, faShoppingBag, faArrowUp, faSearch, faArrowLeft, faArrowRight, faImage,
   faPlusSquare, faMinusSquare, faEuroSign, faCashRegister } from '@fortawesome/free-solid-svg-icons';
-import { FooterComponent } from './components/footer/footer.component';
 
 const appRoutes: Routes = [
   { path: 'cart', component: CartComponent},
@@ -25,6 +26,7 @@ const appRoutes: Routes = [
   { path: 'landing', component: LandingComponent },
   { path: 'adm_dashboard', component: DashboardComponent },
   { path: 'adm_products', component: AdmProductsComponent },
+  { path: 'adm_orders', component: OrdersComponent },
   { path: '', redirectTo: '/landing', pathMatch: 'full' }
 ];
 
@@ -38,7 +40,8 @@ const appRoutes: Routes = [
     DashboardComponent,
     MenuComponent,
     AdmProductsComponent,
-    FooterComponent
+    FooterComponent,
+    OrdersComponent,
   ],
   imports: [
     BrowserModule,

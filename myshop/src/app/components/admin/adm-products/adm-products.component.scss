@@ -91,9 +91,6 @@
               background-color: rgb(255, 230, 245);
               border-bottom: 0.1rem solid rgb(255, 10, 145);
             }
-            tr:hover {
-              background-color: rgb(255, 117, 193);;
-            }
           }
           img {
             max-width: 100px;
@@ -112,6 +109,7 @@
           button:hover {
             background-color: rgb(255, 10, 145);
             color: white;
+            cursor: pointer;
           }
           #add {
             padding: 5px 5px;
@@ -149,6 +147,7 @@
   *:hover {
     background-color: rgb(255, 10, 145);
     color: white;
+    cursor: pointer;
   }
   * {
     background-color: white;
@@ -166,6 +165,7 @@
   *:hover {
     background-color: rgb(255, 10, 145);
     color: white;
+    cursor: pointer;
   }
   * {
     background-color: white;
@@ -190,9 +190,16 @@
 #update_button:hover {
   background-color: rgb(255, 10, 145);
   color: white;
+  cursor: pointer;
 }
 
 #update_button {
   right: 2rem;
   bottom: 2rem;
+}
+
+#products-table {
+    tr:hover {
+      background-color: rgb(255, 117, 193);;
+    }
 }

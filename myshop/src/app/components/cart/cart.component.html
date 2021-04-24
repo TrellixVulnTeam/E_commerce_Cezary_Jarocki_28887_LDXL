@@ -72,7 +72,7 @@
         <div>
           <label for="" class="item">
             <p>Akceptuję regulamin:</p>
-            <input #regulamin type="checkbox" name="aggrement" id="" (change)="0" (click)="changeToCorrect()">
+            <input #regulamin type="checkbox" name="aggrement" id="" (change)="0" (click)="changeToCorrect()" style="cursor: pointer;">
             <button [disabled]="!regulamin.checked" (click)="paymentForm.submit()" id="invalid">Kup</button>
           </label>
         </div>

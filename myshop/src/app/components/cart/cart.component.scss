@@ -100,6 +100,7 @@
       button:hover {
         background-color: rgb(255, 10, 145);
         color: white;
+        cursor: pointer;
       }
     }
     .wrapper_main_child_up {
@@ -188,6 +189,10 @@
           #correct:hover {
             background-color: rgb(255, 10, 145);
             color: white;
+            cursor: pointer;
+          }
+          #invalid {
+            cursor: not-allowed;
           }
         }
       }
